@@ -1,5 +1,5 @@
 # leginon-tutorial
-Docker container image for leginon with simulated data for tutorial purpose
+Docker container image for leginon with simulated data for tutorial purpose.  This is also very useful for development.  See the last part of this doc for instruction.
 
 # release
 v1.0 used in 2019 Erice workshop 
