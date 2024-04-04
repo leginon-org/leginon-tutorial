@@ -35,7 +35,7 @@ RUN yum -y install epel-release yum && yum -y install \
 && pip --no-cache-dir install pymysql==0.10.0 \
 ### Appion specific installs   
 && dbus-uuidgen > /var/lib/dbus/machine-id \
-&& pip --no-cache-dir install --upgrade pip \
+&& pip --no-cache-dir install --upgrade pip==19.0.3 \
 && pip --no-cache-dir install joblib pyfftw3 fs==0.5.4 \
 && updatedb \
 && mkdir -p /emg/data/leginon /emg/data/frames /emg/data/appion /sw/sql \
