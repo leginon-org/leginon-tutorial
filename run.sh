@@ -12,6 +12,7 @@ echo Done.
 WEBPORT=8000
 VNCPORT=5901
 DBPORT=53306
+PTOLEMYPORT=8001
 
 docker run -d -t \
   --privileged \
@@ -21,7 +22,8 @@ docker run -d -t \
   -v $(pwd)/config/httpd.conf:/etc/httpd/conf/httpd.conf \
   -w /sw/myami/appion \
   -e DISPLAY=host.docker.internal:0 \
-  -p $WEBPORT:80 -p $VNCPORT:5901 -p $DBPORT:3306 \
+  --expose 81 \
+  -p $WEBPORT:80 -p $VNCPORT:5901 -p $DBPORT:3306 -p $PTOLEMYPORT:81\
   semc/leginon-tutorial:beta
 
 echo Waiting for database...
