@@ -2,10 +2,10 @@
 
 /etc/init.d/reduxd start && echo 'reduxd' >> /var/log/startup.log
 rm -fr /tmp/.X* && \
-  /usr/sbin/runuser -l leginonuser -c 'vncserver -autokill :1 -name vnc -geometry 1440x900' \
+  /usr/sbin/runuser -l leginonuser -c 'vncserver -name vnc -geometry 1440x900' \
   && echo 'vncserver' >> /var/log/startup.log
 updatedb && echo 'updatedb' >> /var/log/startup.log
-nohup /usr/sbin/apachectl -DFOREGROUND &
+nohup httpd &
 echo 'httpd' >> /var/log/startup.log
 sleep 2s && echo 'sleep' >> /var/log/startup.log
 
