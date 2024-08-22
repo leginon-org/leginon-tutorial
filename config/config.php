@@ -32,6 +32,9 @@ define('BASE_PATH',"myamiweb");
 define('BASE_URL', "/".BASE_PATH."/");
 define('PROJECT_URL', BASE_URL."project/");
 
+// --- define label for auto screen sessions
+define('AUTO_SESSION_LABEL',"auto-screen");
+
 // --- myamiweb login --- //
 // Browse to the administration tools in myamiweb prior to 
 // changing this to true to populate DB tables correctly.
@@ -41,7 +44,7 @@ define('COOKIE_PASSPHRASE', '');
 
 // --- Administrator email title and email address -- //
 define('EMAIL_TITLE', 'The name of your institute');
-define('ADMIN_EMAIL', "anoble@nysbc.org");
+define('ADMIN_EMAIL', "anchi.cheng@czii.org");
 
 // --- When 'ENABLE_SMTP set to true, email will send out -- //
 // --- via ADMIN_EMIL's SMTP server. --// 
@@ -63,6 +66,8 @@ define('DB_USER', "usr_object");	// DB User name
 define('DB_PASS', "leginon-tutorial");	// DB Password
 define('DB_LEGINON', "leginondb");	// Leginon database name
 define('DB_PROJECT', "projectdb");	// Project database name
+//DB table storage engine. MyISAM, InnoDB, etc. Leave empty for default of the server.
+define('DB_ENGINE',"");
 
 // --- default URL for project section --- //
 define('VIEWER_URL', BASE_URL."3wviewer.php?expId=");
@@ -138,6 +143,9 @@ define('ENABLE_CACHE', false);
 // --- define('CACHE_PATH', "/srv/www/cache/"); --- //
 define('CACHE_PATH', "");
 
+// --- limit session to be displayed ---//
+define('SESSION_LIMIT', 3000);
+
 // --- define Flash player base url --- //
 define('FLASHPLAYER_URL', "/flashplayer/");
 
@@ -156,8 +164,17 @@ define('HIDE_MATLAB', true);
 // --- hide processing tools still under development. --- //
 define('HIDE_FEATURE', true);
 
+// --- hide processing tools requiring GPU - this is a temporary fix
+// --  processingHost should be modified in the future ---//
+
+define('HIDE_GPU_FEATURE',false);
+
 // --- temporary images upload directory --- //
 define('TEMP_IMAGES_DIR', "");
+
+// --- command to activate a particular python for tiltgroup_wranger.py, if necessary
+// define('ACTIVATE_PYTHON', "source /usr/local/eman2-sphire-sparx/bin/activate; ");
+define('ACTIVATE_PYTHON', "");
 
 // --- use appion wrapper (prepends APPION_WRAPPER_PATH to all Appion commands) --- //
 define('USE_APPION_WRAPPER', false);
@@ -175,7 +192,7 @@ define('APPION_PARENT_ADDITION',0);
 // --- negative index of the directory before the last directory named "leginon"
 // in DEFAULT_APPION_PATH used to replace the element of DEFAULT_APPION_PATH
 // before the last directory named "appion"--- //
-// Thre result is a subdivision of data by user or group before appion/leginon directories.
+// The result is a subdivision of data by user or group before appion/leginon directories.
 //define('APPION_PARENT_REPLACEMENT',-2);
 
 // --- sample tracking ---//

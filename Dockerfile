@@ -20,6 +20,7 @@ RUN dnf -y groupinstall "Xfce" "base-x" \
 && rm -f /etc/systemd/system/default.target \
 && ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target \
 && systemctl unmask graphical.target \
+&& mkdir /run/php-fpm \
 && mkdir -p /emg/data/leginon /emg/data/frames /emg/data/appion /sw/sql \
 && chmod 777 -R /emg
 
@@ -60,6 +61,9 @@ RUN cd /sw/myami \
 && cd /sw/myami/modules/numextension \
 && python ./setup.py install \
 && rm -rf /usr/local/lib64/python3.9/site-packages/numextension \
+&& cd /sw/myami/modules/jenks-master \
+&& pip install Cython \
+&& python ./setup.py install \
 && cd /sw/myami/redux \
 && python ./setup.py install \
 #

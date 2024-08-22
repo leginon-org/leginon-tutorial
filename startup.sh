@@ -5,6 +5,8 @@ rm -fr /tmp/.X* && \
   /usr/sbin/runuser -l leginonuser -c 'vncserver -name vnc -geometry 1440x900' \
   && echo 'vncserver' >> /var/log/startup.log
 updatedb && echo 'updatedb' >> /var/log/startup.log
+nohup /usr/sbin/php-fpm --nodaemonize &
+echo 'php-fpm' >> /var/log/startup.log
 nohup httpd &
 echo 'httpd' >> /var/log/startup.log
 sleep 2s && echo 'sleep' >> /var/log/startup.log
