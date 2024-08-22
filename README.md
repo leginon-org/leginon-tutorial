@@ -59,22 +59,22 @@ https://www.realvnc.com/en/connect/download/viewer/macos/
 
 > **Note:** The installation directory will contain the data directory. 
 
-## Linux/MacOS &nbsp;&nbsp; *(command line)*
+## Linux/MacOS/Windows &nbsp;&nbsp; *(command line)*
 *<details><summary>click to expand</summary><p>*
 ```sh
 cd
-git clone http://github.com/nysbc/leginon-tutorial
+git clone -b py3-rocky9 http://github.com/leginon-org/leginon-tutorial leginon-tutorial
 cd leginon-tutorial
 ./run.sh
 ```
 *<details><summary>This performs the following operations (click to expand):</summary><p>*
-- Downloads the semc/leginon-tutorial repository from github saved into a local leginon-tutorial directory under your home directory.
+- Downloads the leginon-org/leginon-tutorial repository from github saved into a local leginon-tutorial directory under your home directory.
 
 - Build a docker image from that,
 
-- Downloads the nysbc/leginon-tutorial repository from github saved into a local leginon-tutorial directory.
+- Downloads the leginon-tutorial repository from github saved into a local leginon-tutorial directory.
 
-- Download the semc/leginon-tutorial image from Docker Hub to your local docker.
+- Download the anchi/leginon-py3-rocky9a image from Docker Hub to your local docker.
 
 - Creates a Docker volume to persist the Mariadb database,
 
@@ -89,57 +89,6 @@ cd leginon-tutorial
 
 </p></details>
 
-</p></details>
-
-## Windows &nbsp;&nbsp; *(GUI & command line)*
-*<details><summary>click to expand</summary><p>*
-In the Kitematic search bar type: `semc/leginon-tutorial`.
-
-Click `Create` on the `semc` `leginon-tutorial` repository and wait for the image to download and launch.
-
-**_<details><summary>Click for image</summary><p>_**
-
-  ![](https://i.imgur.com/D6P0c3J.png)
-
-  </p></details>
-
-*<details><summary>In Windows, you may need to tweak your settings (click to expand)</summary><p>*
-
-  If you needed to run Docker using VirtualBox, then you will need to increase the amount of RAM allocated to Docker:
-
-  - Stop the Docker container,
-
-  - Open VirtualBox,
-
-  - Shut down the running virtual machine,
-
-  - Edit the Settings for the virtual machine you just shut down,
-
-  - Increase the RAM to 8+ GB,
-
-  - Re-start the container.
-  **_<details><summary>Click for images</summary><p>_**
-
-    ![](https://i.imgur.com/VDa8UNj.png)
-
-    ![](https://i.imgur.com/JOYbNbG.png)
-
-    - **Close Kitematic**
-
-    ![](https://i.imgur.com/whV3ykr.png)
-
-    ![](https://i.imgur.com/xmz1vhX.png)
-
-    - Increase the allocated RAM for the virtual machine:
-
-    ![](https://i.imgur.com/KQAnxwZ.png)
-
-    - **Start Kitematic**
-
-    </p></details>
-  </p></details>
-
-</p></details>
 
 </p></details>
 
@@ -422,8 +371,6 @@ Hint: You may want to use multiple hole template on the c-flat grid.  See legino
 
 - Pull git repository
   
-```git remote set-url https://emg.nysbc.org/git/myami```
-
 ```git pull```
 
 </p></details>
@@ -434,17 +381,11 @@ Hint: You may want to use multiple hole template on the c-flat grid.  See legino
 
 *_<details><summary>click to expand</summary><p>_*
 
-- /sw/myami is a git clone of myami-tutorial branch.  You can switch to another branch, for example myami-beta by
+- /sw/myami is a git clone of myami-python3 branch.  You can switch to another branch, for example myami-php8 by
 
 ```cd /sw/myami```
 
-```git remote set-url [https://emg.nysbc.org/git/myam](https://github.com/leginon-org/leginon.git```
-
-```git checkout myami-3.7```
-
- - new versions of myami branches uses pymysql.  Until I build a new docker image, you need to add this with pip
- 
- ```pip install pymysql==0.10.0```
+```git checkout myami-php8```
 
 </p></details>
 
