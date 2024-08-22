@@ -2,7 +2,7 @@
 Docker container image for leginon with simulated data for tutorial purpose.  This is also very useful for development.  See the last part of this doc for instruction.
 
 # release
-v1.0 used in 2019 Erice workshop 
+v1.1 for myami-4.0 
 
 # Prerequisites
 
@@ -18,7 +18,7 @@ v1.0 used in 2019 Erice workshop
 
 - Docker
 
-**Set memory to 4 GB instead of the default 2 GB**
+**Set memory to >= 4 GB**
 
 - VNC Viewer: TigerVNC VNC viewer(preferred) or RealVNC.
 
@@ -28,43 +28,15 @@ v1.0 used in 2019 Erice workshop
 
 **Note:** You must have sudo or root access to install Docker. If you do not wish to run Docker as sudo/root, you need to configure user groups as described here: https://docs.docker.com/install/linux/linux-postinstall/
 
-## Linux &nbsp;&nbsp; *(command line)*
+## Linux, Mac or Windows &nbsp;&nbsp; *(GUI)*
 *<details><summary>click to expand</summary><p>*
 
-Download and install Docker 1.21 or greater for [Linux](https://docs.docker.com/engine/installation/)
-> Consider using a Docker 'convenience script' to install (search on your OS's Docker installation webpage).
-
-Launch docker according to your Docker engine's instructions, typically ``docker start``.
-
+Download and install Docker Desktop 4.20 or greater for [your os]([https://docs.docker.com/get-started/get-docker/])
+Launch Docker Desktop.  You should also get command line access in a new terminal.
 </p><p>
   
-**Set memory to 4 GB from Docker Advanced Preference**
+**Set memory to >= 4 GB from Docker Advanced Preference**
 </p>
-
-</p></details>
-
-## MacOS 10.12 and above &nbsp;&nbsp; *(GUI)*
-*<details><summary>click to expand</summary>*
-
-Download and install Docker Desktop 2.0.0 or greater for [MacOS](https://store.docker.com/editions/community/docker-ce-desktop-mac).
-<p>
-  
-**Set memory to 4 GB from Docker Advanced Preference**
-</p></details>
-
-
-## Windows &nbsp;&nbsp; *(GUI & command line)*
-*<details><summary>click to expand</summary>*
-<p>
-Download and install Docker Toolbox for [Windows](https://docs.docker.com/toolbox/toolbox_install_windows/).
-
-</p><p>
-
-**Set memory to 4 GB**
-</p>
-
-Launch Kitematic.
-> If on first startup Kitematic displays a red error suggesting that you run using VirtualBox, do so.
 
 </p></details>
 
