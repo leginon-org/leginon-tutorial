@@ -44,7 +44,7 @@ define('COOKIE_PASSPHRASE', '');
 
 // --- Administrator email title and email address -- //
 define('EMAIL_TITLE', 'The name of your institute');
-define('ADMIN_EMAIL', "anchi.cheng@czii.org");
+define('ADMIN_EMAIL', "your_username@institute.edu");
 
 // --- When 'ENABLE_SMTP set to true, email will send out -- //
 // --- via ADMIN_EMIL's SMTP server. --// 
