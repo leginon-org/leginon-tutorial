@@ -14,7 +14,8 @@ RUN dnf -y install epel-release && dnf -y --skip-broken install \
  tigervnc-server xterm xsetroot \
 && dbus-uuidgen > /var/lib/dbus/machine-id \
 && updatedb
-
+# tifffile as dependency. Note, not dnf package found for it.
+RUN pip install tifffile
 
 RUN dnf -y groupinstall "Xfce" "base-x" \
 && rm -f /etc/systemd/system/default.target \
