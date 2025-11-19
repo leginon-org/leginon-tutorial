@@ -91,28 +91,28 @@ https://www.realvnc.com/en/connect/download/viewer/macos/
 *<details><summary>click to expand</summary><p>*
 ```sh
 cd
-git clone http://github.com/nysbc/leginon-tutorial
+git clone [http://github.com/leginon-org/leginon-tutorial.git](https://github.com/leginon-org/leginon-tutorial.git)
 cd leginon-tutorial
 ./run.sh
 ```
 *<details><summary>This performs the following operations (click to expand):</summary><p>*
-- Downloads the semc/leginon-tutorial repository from github saved into a local leginon-tutorial directory under your home directory.
+- Downloads the leginon-tutorial repository from github saved into a local leginon-tutorial directory under your home directory.
 
-- Build a docker image from that,
-
-- Downloads the nysbc/leginon-tutorial repository from github saved into a local leginon-tutorial directory.
-
-- Download the semc/leginon-tutorial image from Docker Hub to your local docker.
+- Download the anchi2c/leginon-py2-centos7 image from Docker Hub to your local docker.
 
 - Creates a Docker volume to persist the Mariadb database,
 
 - Mounts `~/leginon-tutorial/emg/data` on the host side to `/emg/data` inside the running container,
 
-- Mounts the `mariadb-database` Docker volume to `/var/lib/mysql` inside the running container,
+- Mounts the mariadb named `leginon3x-db` Docker volume to `/var/lib/mysql` inside the running container,
 
 - Mounts the `~/leginon-tutorial` directory to `/local_data` inside the running container,
 
-- Opens ports 8000 for web traffic, 33060 for database traffic, and 5901 for VNC'ing on the host side to forward into the running container as needed.
+- Opens port 8000 for web traffic
+- Open port 33060 for database traffic
+- Open port  5901 for VNC'ing on the host side to forward into the running container as needed.
+- Open port 8001 for ptolemy service
+
 - Waits for the mysqld_safe database daemon to launch (for ~10 seconds, but could in rare instances take longer).
 
 </p></details>
