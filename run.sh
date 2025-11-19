@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [[ ! $(docker volume ls -q | grep mariadb) ]]; then
+if [[ ! $(docker volume ls -q | grep leginon3x-db) ]]; then
   echo Creating Docker volume for mariadb-database...
-  docker volume create leginon-mariadb
+  docker volume create leginon3x-db
 else
-  echo Using existing leginon-mariadb volume.
+  echo Using existing leginon3x-db volume for MyISAM.
 fi
 echo Done.
 
@@ -12,17 +12,20 @@ echo Done.
 WEBPORT=8000
 VNCPORT=5901
 DBPORT=53306
+PTOLEMYPORT=8001
 
 docker run -d -t \
   --privileged \
   -v $(pwd)/emg/data:/emg/data \
-  -v leginon-mariadb:/var/lib/mysql \
+  -v leginon3x-db:/var/lib/mysql \
   -v $(pwd):/local_data \
   -v $(pwd)/config/httpd.conf:/etc/httpd/conf/httpd.conf \
+  -v $(pwd)/config/my.cnf:/etc/my.cnf \
   -w /sw/myami/appion \
   -e DISPLAY=host.docker.internal:0 \
-  -p $WEBPORT:80 -p $VNCPORT:5901 -p $DBPORT:3306 \
-  semc/leginon-tutorial:beta
+  --expose 81 \
+  -p $WEBPORT:80 -p $VNCPORT:5901 -p $DBPORT:3306 -p $PTOLEMYPORT:81\
+  anchi2c/leginon-py2-centos7
 
 echo Waiting for database...
 sleep 10
