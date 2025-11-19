@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build --no-cache -t leginon-3.7-learn .
+docker build --no-cache -t anchi2c/leginon-py2-centos7 .

@@ -3,6 +3,12 @@ MAINTAINER Anchi Cheng <acheng@nysbc.org>
 LABEL authors="Neil Voss, Carl Negro, Alex Noble, Anchi Cheng"
 
 COPY startup.sh /sw/startup.sh
+
+### find yum repo files in yum vault.
+RUN sed -i 's/mirror\.centos\.org/vault.centos.org/g' /etc/yum.repos.d/CentOS-*.repo
+RUN sed -i 's/^#.*baseurl=http/baseurl=http/g' /etc/yum.repos.d/CentOS-*.repo
+RUN sed -i 's/^mirrorlist=http/#mirrorlist=http/g' /etc/yum.repos.d/CentOS-*.repo
+
 ### install software
 RUN yum -y install epel-release yum && yum -y install \
  wget sudo passwd rsync tar openssh-clients \
@@ -32,7 +38,7 @@ RUN yum -y install epel-release yum && yum -y install \
 && sed -i.bak 's/max_allowed_packet = [0-9]*M/max_allowed_packet = 24M/' /etc/my.cnf \
 #
 ### Leginon pip install not in yum
-&& pip --no-cache-dir install pymysql==0.10.0 \
+&& pip --no-cache-dir install pymysql==0.10.1 \
 ### Appion specific installs   
 && dbus-uuidgen > /var/lib/dbus/machine-id \
 && pip --no-cache-dir install --upgrade pip==19.0.3 \
@@ -49,12 +55,12 @@ COPY sql/ /sw/sql/
 EXPOSE 80 5901
 
 ### myami
-RUN git clone -b myami-tutorial http://emg.nysbc.org/git/myami /sw/myami \
+RUN git clone -b myami-3.7 https://github.com/leginon-org/leginon.git /sw/myami \
 ### eman1
-&& wget http://emg.nysbc.org/redmine/attachments/download/10961/eman-linux-x86_64-cluster-1.9_stripped.tar.gz && tar xzfv eman-linux-x86_64-cluster-1.9_stripped.tar.gz -C /sw && rm eman-linux-x86_64-cluster-1.9_stripped.tar.gz \
+&& wget https://github.com/leginon-org/appion-redmine-files/raw/refs/heads/main/eman-linux-x86_64-cluster-1.9_stripped.tar.gz && tar xzfv eman-linux-x86_64-cluster-1.9_stripped.tar.gz -C /sw && rm eman-linux-x86_64-cluster-1.9_stripped.tar.gz \
 && ln -sv /sw/eman1/lib/libpyEM.so.ucs4.py2.6 /sw/eman1/lib/libpyEM.so \
 #
-&& wget http://emg.nysbc.org/redmine/attachments/download/11662/ctffind-4.1.13.tgz \
+&& wget https://github.com/leginon-org/appion-redmine-files/raw/refs/heads/main/ctffind-4.1.13.tgz \
 && tar -xzvf ctffind-4.1.13.tgz -C /sw && rm ctffind-4.1.13.tgz \
 && ln -sv /sw/ctffind4/ctffind-4.1.13 /usr/bin/ctffind4 \
 ### Myami setup
@@ -92,10 +98,11 @@ USER root
 COPY config/xstartup /home/leginonuser/.vnc/xstartup
 COPY config/fbpanel-default /home/leginonuser/.config/fbpanel/default
 COPY config/config.php /sw/myami/myamiweb/config.php
+COPY data/simimages /sw/simimages
 RUN chown -R leginonuser:users /home/leginonuser /emg/data \
 && mkdir -p /emg/data/ \
+&& mv /sw/simimages /emg \
 && chmod -R 777 /emg/ \
-&& cp -rf /sw/myami/tutorial_data/simimages /emg \
 && chmod 700 /home/leginonuser/.vnc/xstartup \
 && rm -rf root/.cache/ /anaconda-post.log \
 && sed -i -e '/rctv/d' /sw/myami/myamiweb/index.php \
